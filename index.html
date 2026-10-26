@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Rubik:wght@500..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/style.css?v=5">
   <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
@@ -52,6 +52,7 @@
       <a href="#events">События</a>
       <a href="#about">О нас</a>
       <a href="#contacts">Контакты</a>
+      <a href="#booking" class="btn nav__cta">Забронировать столик</a>
     </nav>
 
     <p class="open-status" id="open-status" hidden></p>
@@ -105,9 +106,8 @@
     </div>
   </section>
 
-  <!-- Первый экран: фото ростера, поверх — этикетка текущего лота и кривая обжарки -->
+  <!-- Первый экран: наезжает на конец туннеля как шторка. Этикетка текущего лота и кривая обжарки -->
   <section class="hero">
-    <img class="hero__bg" src="img/hero.jpg" alt="" width="1800" height="1100" fetchpriority="high">
     <div class="container hero__inner">
       <div class="hero__copy">
         <p class="hero__kicker">Кофейня и&nbsp;обжарочная с&nbsp;2019 года</p>
@@ -137,7 +137,7 @@
         </dl>
 
         <figure class="curve">
-          <svg viewBox="0 0 400 190" role="img" aria-labelledby="curve-cap">
+          <svg viewBox="0 0 400 210" role="img" aria-labelledby="curve-cap">
             <!-- сетка: время 0–12 мин по X, температура 80–220 °C по Y -->
             <g class="curve__grid">
               <line x1="30" y1="20" x2="390" y2="20"/>
@@ -149,19 +149,19 @@
               <text x="24" y="24" text-anchor="end">220°</text>
               <text x="24" y="74" text-anchor="end">170°</text>
               <text x="24" y="124" text-anchor="end">120°</text>
-              <text x="30" y="182">0</text>
-              <text x="210" y="182" text-anchor="middle">6 мин</text>
-              <text x="390" y="182" text-anchor="end">12</text>
+              <text x="30" y="204">0</text>
+              <text x="210" y="204" text-anchor="middle">6 мин</text>
+              <text x="390" y="204" text-anchor="end">12</text>
             </g>
             <path class="curve__line" pathLength="1"
                   d="M30 40 C 45 120, 60 150, 75 151 C 110 152, 170 110, 230 72 C 270 50, 300 43, 330 35"/>
             <g class="curve__marks">
               <circle cx="75" cy="151" r="4"/>
-              <text x="83" y="150">точка разворота</text>
+              <text x="62" y="180">точка разворота</text>
               <circle cx="300" cy="43" r="4"/>
-              <text x="296" y="34" text-anchor="end">первый крэк</text>
+              <text x="290" y="24" text-anchor="end">первый крэк</text>
               <circle cx="330" cy="35" r="4"/>
-              <text x="338" y="52">выгрузка</text>
+              <text x="392" y="62" text-anchor="end">выгрузка</text>
             </g>
           </svg>
           <figcaption id="curve-cap">Кривая обжарки этой партии: температура зерна за&nbsp;11 минут в&nbsp;барабане.</figcaption>
@@ -198,7 +198,7 @@
         <p>Что гости берут чаще всего. Полное меню&nbsp;— ниже.</p>
       </div>
 
-      <ul class="hits">
+      <ul class="hits scroller">
         <li class="hit reveal">
           <img src="img/hit-cappuccino.jpg" alt="Капучино с латте-артом на белом блюдце" loading="lazy" width="700" height="700">
           <div class="hit__body">
@@ -228,6 +228,7 @@
           </div>
         </li>
       </ul>
+      <p class="swipe-hint" aria-hidden="true">Листайте →</p>
 
       <div class="menu__head">
         <h3 class="menu__subtitle">Всё меню</h3>
@@ -285,9 +286,20 @@
     <div class="container">
       <div class="section-head reveal">
         <h2 id="roasting-title">От&nbsp;зелёного зерна до&nbsp;чашки</h2>
-        <p>Весь путь проходит в&nbsp;одном здании: ростер стоит за&nbsp;стеклом в&nbsp;глубине зала, и&nbsp;по&nbsp;четвергам за&nbsp;ним можно наблюдать.</p>
+        <p>Весь путь проходит в&nbsp;одном здании, от&nbsp;мешка с&nbsp;зелёным зерном до&nbsp;вашей чашки.</p>
       </div>
-      <ol class="steps">
+    </div>
+
+    <figure class="band reveal">
+      <img src="img/hero.jpg" alt="Ростер в глубине зала, рядом мешки с зелёным зерном" loading="lazy" width="1800" height="1100">
+      <figcaption class="band__caption">
+        <svg class="mascot band__mascot" aria-hidden="true"><use href="#mascot"/></svg>
+        <span><b>Ростер стоит за&nbsp;стеклом в&nbsp;глубине зала.</b> По&nbsp;четвергам в&nbsp;14:00&nbsp;— открытая обжарка: смотрите и&nbsp;пробуйте кофе прямо из&nbsp;барабана.</span>
+      </figcaption>
+    </figure>
+
+    <div class="container">
+      <ol class="steps scroller">
         <li class="step reveal">
           <img src="img/step-green.jpg" alt="Зелёные необжаренные кофейные зёрна" loading="lazy" width="800" height="600">
           <h3>Выбираем зерно</h3>
@@ -309,6 +321,7 @@
           <p>Зерну даём отдохнуть 5–7 дней, потом настраиваем помол и&nbsp;ставим в&nbsp;меню. Через две недели партия заканчивается.</p>
         </li>
       </ol>
+      <p class="swipe-hint" aria-hidden="true">Листайте →</p>
     </div>
   </section>
 
@@ -320,7 +333,7 @@
         <p>Пачки по&nbsp;250&nbsp;г и&nbsp;1&nbsp;кг. Смелем при вас под турку, гейзер, капельную кофеварку или оставим зерном.</p>
       </div>
 
-      <ul class="packs">
+      <ul class="packs scroller">
         <li class="pack pack--peach reveal">
           <p class="pack__use">Фильтр</p>
           <h3>Эфиопия, Гуджи</h3>
@@ -350,6 +363,7 @@
           <p class="pack__price"><b>890&nbsp;₽</b> 250&nbsp;г <span>· 2&nbsp;890&nbsp;₽ за&nbsp;кг</span></p>
         </li>
       </ul>
+      <p class="swipe-hint" aria-hidden="true">Листайте →</p>
 
       <div class="subscribe reveal">
         <img src="img/beans-shop.jpg" alt="Пачка кофе, кофемолка и кружка на деревянной стойке" loading="lazy" width="1000" height="800">
@@ -387,7 +401,7 @@
         <h2 id="team-title">Кто варит ваш кофе</h2>
         <p>Нас девять человек. Вот те, кого вы чаще всего увидите за&nbsp;стойкой и&nbsp;у&nbsp;ростера.</p>
       </div>
-      <ul class="team">
+      <ul class="team scroller">
         <li class="person reveal">
           <img src="img/team-roaster.jpg" alt="Улыбающийся мужчина с бородой в кепке и фартуке" loading="lazy" width="600" height="750">
           <h3>Артём</h3>
@@ -407,6 +421,7 @@
           <p>Отвечает за&nbsp;фильтр. Подберёт заваривание под&nbsp;вашу кофеварку дома, если принесёте её фото.</p>
         </li>
       </ul>
+      <p class="swipe-hint" aria-hidden="true">Листайте →</p>
     </div>
   </section>
 
@@ -423,11 +438,11 @@
           <button type="button" class="switch" id="billing-switch" role="switch" aria-checked="false" aria-labelledby="billing-sub">
             <span class="switch__thumb"></span>
           </button>
-          <span class="billing__label" id="billing-sub">Абонемент на&nbsp;4&nbsp;занятия <span class="billing__save">−20%</span></span>
+          <span class="billing__label" id="billing-sub">Абонемент<span class="billing__long"> на&nbsp;4&nbsp;занятия</span> <span class="billing__save">−20%</span></span>
         </div>
       </div>
 
-      <ul class="plans">
+      <ul class="plans scroller">
         <li class="plan event plan--left reveal">
           <img class="plan__img" src="img/event-cupping.jpg" alt="Девушка нюхает кофе на каппинге, перед ней ряды белых чашек" loading="lazy" width="900" height="600">
           <div class="plan__body">
@@ -490,6 +505,7 @@
           </div>
         </li>
       </ul>
+      <p class="swipe-hint" aria-hidden="true">Листайте →</p>
 
       <div class="plans__more reveal">
         <p><b>Открытая обжарка</b> по&nbsp;четвергам в&nbsp;14:00&nbsp;— бесплатно, без записи. Смотрите, как жарится новая партия, и&nbsp;пробуйте кофе прямо из&nbsp;ростера.</p>
@@ -507,30 +523,25 @@
         <p class="reviews__rating"><span class="star-rating" data-value="4.9" data-size="md" data-orientation="horizontal"></span> 4,9 на&nbsp;Яндекс Картах по&nbsp;612 отзывам</p>
       </div>
       <div class="reviews">
-        <figure class="review reveal">
-          <blockquote>Хожу каждое утро перед работой. Бариста уже знают мой заказ и&nbsp;каждый раз предлагают попробовать новый фильтр.</blockquote>
-          <figcaption><span>Анна, Яндекс Карты</span><span class="star-rating" data-value="5" data-size="sm" data-orientation="horizontal"></span></figcaption>
-        </figure>
-        <figure class="review reveal">
-          <blockquote>Сырники здесь лучшие в&nbsp;районе. Тихо, можно спокойно поработать пару часов, никто не&nbsp;торопит.</blockquote>
-          <figcaption><span>Михаил, 2ГИС</span><span class="star-rating" data-value="4" data-size="sm" data-orientation="horizontal"></span></figcaption>
-        </figure>
-        <figure class="review reveal">
-          <blockquote>Пришли с&nbsp;собакой, и&nbsp;миску с&nbsp;водой нам принесли раньше меню. Купили домой пачку эфиопии, очень ягодная.</blockquote>
-          <figcaption><span>Елена, Google</span><span class="star-rating" data-value="5" data-size="sm" data-orientation="horizontal"></span></figcaption>
-        </figure>
-        <figure class="review reveal">
+        <figure class="review review--big reveal">
           <blockquote>Сходили на&nbsp;субботний каппинг. Впервые поняла, чем кенийский кофе отличается от&nbsp;бразильского, теперь беру зерно только здесь.</blockquote>
-          <figcaption><span>Ольга, Яндекс Карты</span><span class="star-rating" data-value="5" data-size="sm" data-orientation="horizontal"></span></figcaption>
+          <figcaption><span>Ольга, Яндекс Карты</span><span class="star-rating" data-value="5" data-size="md" data-orientation="horizontal"></span></figcaption>
         </figure>
-        <figure class="review reveal">
-          <blockquote>Оформил подписку на&nbsp;зерно: каждые две недели новый лот и&nbsp;открытка с&nbsp;рецептом. Дома кофе стал вкуснее, чем в&nbsp;большинстве кофеен.</blockquote>
-          <figcaption><span>Денис, Яндекс Карты</span><span class="star-rating" data-value="5" data-size="sm" data-orientation="horizontal"></span></figcaption>
-        </figure>
-        <figure class="review reveal">
-          <blockquote>Миндальный круассан как в&nbsp;Париже. Приходите до&nbsp;обеда, иначе не&nbsp;достанется.</blockquote>
-          <figcaption><span>Ксения, 2ГИС</span><span class="star-rating" data-value="5" data-size="sm" data-orientation="horizontal"></span></figcaption>
-        </figure>
+        <div class="reviews__small scroller">
+          <figure class="review reveal">
+            <blockquote>Хожу каждое утро перед работой. Бариста уже знают мой заказ и&nbsp;каждый раз предлагают попробовать новый фильтр.</blockquote>
+            <figcaption><span>Анна, Яндекс Карты</span><span class="star-rating" data-value="5" data-size="sm" data-orientation="horizontal"></span></figcaption>
+          </figure>
+          <figure class="review reveal">
+            <blockquote>Пришли с&nbsp;собакой, и&nbsp;миску с&nbsp;водой нам принесли раньше меню. Купили домой пачку эфиопии, очень ягодная.</blockquote>
+            <figcaption><span>Елена, Google</span><span class="star-rating" data-value="5" data-size="sm" data-orientation="horizontal"></span></figcaption>
+          </figure>
+          <figure class="review reveal">
+            <blockquote>Миндальный круассан как в&nbsp;Париже. Приходите до&nbsp;обеда, иначе не&nbsp;достанется.</blockquote>
+            <figcaption><span>Ксения, 2ГИС</span><span class="star-rating" data-value="5" data-size="sm" data-orientation="horizontal"></span></figcaption>
+          </figure>
+        </div>
+        <p class="swipe-hint" aria-hidden="true">Листайте →</p>
       </div>
     </div>
   </section>
@@ -538,7 +549,13 @@
   <!-- Вопросы -->
   <section class="section section--milk" id="faq" aria-labelledby="faq-title">
     <div class="container faq">
-      <h2 id="faq-title">Частые вопросы</h2>
+      <div class="faq__aside">
+        <h2 id="faq-title">Частые вопросы</h2>
+        <div class="faq__ask">
+          <svg class="mascot faq__mascot" aria-hidden="true"><use href="#mascot"/></svg>
+          <p>Не&nbsp;нашли ответ? Позвоните, ответим за&nbsp;минуту: <a href="tel:+79990000000">+7 999 000-00-00</a></p>
+        </div>
+      </div>
       <div class="faq__list">
         <details>
           <summary>Можно взять кофе с&nbsp;собой?</summary>
@@ -592,7 +609,38 @@
           </div>
           <div class="field">
             <label for="f-time">Время</label>
-            <input id="f-time" name="time" type="time" step="1800" value="10:00" required>
+            <select id="f-time" name="time" required>
+              <option value="08:00">8:00</option>
+              <option value="08:30">8:30</option>
+              <option value="09:00">9:00</option>
+              <option value="09:30">9:30</option>
+              <option selected>10:00</option>
+              <option>10:30</option>
+              <option>11:00</option>
+              <option>11:30</option>
+              <option>12:00</option>
+              <option>12:30</option>
+              <option>13:00</option>
+              <option>13:30</option>
+              <option>14:00</option>
+              <option>14:30</option>
+              <option>15:00</option>
+              <option>15:30</option>
+              <option>16:00</option>
+              <option>16:30</option>
+              <option>17:00</option>
+              <option>17:30</option>
+              <option>18:00</option>
+              <option>18:30</option>
+              <option>19:00</option>
+              <option>19:30</option>
+              <option>20:00</option>
+              <option>20:30</option>
+              <option>21:00</option>
+              <option>21:30</option>
+              <option>22:00</option>
+              <option>22:30</option>
+            </select>
             <p class="field__error" id="f-time-err"></p>
           </div>
           <div class="field">
@@ -644,6 +692,8 @@
 
 </main>
 
+<a href="#booking" class="btn mobile-cta" id="mobile-cta">Забронировать столик</a>
+
 <footer class="footer">
   <div class="container footer__inner">
     <div class="footer__brand">
@@ -670,8 +720,8 @@
 </footer>
 
 <script src="js/star-rating.js?v=2"></script>
-<script src="js/main.js"></script>
-<script src="js/tunnel.js?v=2"></script>
+<script src="js/main.js?v=2"></script>
+<script src="js/tunnel.js?v=3"></script>
 <script src="js/plans.js"></script>
 </body>
 </html>

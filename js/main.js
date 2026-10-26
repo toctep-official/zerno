@@ -18,11 +18,20 @@
   const nav = document.getElementById('nav');
   const setNav = (open) => {
     nav.classList.toggle('is-open', open);
+    document.body.classList.toggle('nav-open', open); // меню на весь экран — страница под ним не листается
     burger.setAttribute('aria-expanded', String(open));
   };
   burger.addEventListener('click', () => setNav(!nav.classList.contains('is-open')));
   nav.addEventListener('click', (e) => { if (e.target.closest('a')) setNav(false); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setNav(false); });
+
+  // ---------- Кнопка брони внизу экрана на телефоне: прячется, когда форма уже видна ----------
+  const mobileCta = document.getElementById('mobile-cta');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      mobileCta.classList.toggle('is-hidden', entry.isIntersecting);
+    }).observe(document.getElementById('booking'));
+  }
 
   // ---------- Открыто или закрыто ----------
   const status = document.getElementById('open-status');
@@ -153,12 +162,14 @@
     await sendBooking(data);
 
     const day = new Date(data.date + 'T12:00').toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
-    done.innerHTML = '';
+    done.innerHTML = '<svg class="mascot form__mascot" aria-hidden="true"><use href="#mascot"/></svg>';
     const title = document.createElement('b');
     title.textContent = `Столик забронирован на ${day}, ${data.time}`;
     const text = document.createElement('span');
     text.textContent = `Позвоним на ${data.phone} в течение 15 минут, чтобы подтвердить. Гостей: ${data.guests}.`;
-    done.append(title, text);
+    const box = document.createElement('div');
+    box.append(title, text);
+    done.append(box);
     done.focus();
 
     form.reset();
