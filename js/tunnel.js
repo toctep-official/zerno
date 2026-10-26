@@ -58,7 +58,6 @@
 
   const smooth = { p: rawProgress(), x: 0, y: 0 };
   const SPAN = 0.55; // какую часть полёта летит одна карточка
-  const LEAD = 0.2;  // туннель — первый экран: первые фото уже в пути, когда сайт открылся
 
   const render = () => {
     const p = smooth.p;
@@ -68,7 +67,8 @@
     const pan = stage.mobile ? 20 : 45;
 
     for (const c of cards) {
-      const start = -LEAD + (c.index / cards.length) * (1 - SPAN + LEAD);
+      // Первая карточка стартует с началом прокрутки: при открытии сайта видно только название
+      const start = (c.index / cards.length) * (1 - SPAN);
       const local = clamp((p - start) / SPAN);
       const z = farZ + (nearZ - farZ) * local;
       const x = c.cos * stage.w * c.rx - smooth.x * pan;
