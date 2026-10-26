@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Зерно — кофейня со своей обжаркой</title>
+  <meta name="description" content="Кофейня «Зерно» на Примерной, 12. Обжариваем кофе каждый четверг, печём выпечку с утра, завтраки весь день. Бронь столика онлайн.">
+  <meta property="og:title" content="Зерно — кофейня со своей обжаркой">
+  <meta property="og:description" content="Обжариваем кофе каждый четверг. Завтраки весь день.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#F5F0E6">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23F2C94C'/><ellipse cx='16' cy='16' rx='8' ry='11' fill='none' stroke='%2322336B' stroke-width='2.5' transform='rotate(-15 16 16)'/><path d='M15 6c-3 5 3 8 0 13' stroke='%2322336B' stroke-width='2.5' fill='none' stroke-linecap='round'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Rubik:wght@500..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=4">
+  <script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+
+<!-- Рисунки, которые повторяются на странице: маскот-зёрнышко и значок зерна. Вставляются через <use href="#..."> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mascot" viewBox="0 0 130 140">
+    <g fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="64" cy="60" rx="38" ry="47" transform="rotate(-12 64 60)"/>
+      <path d="M58 15c-7 9 6 15-1 25c-4 5 2 8 0 12"/>
+      <path d="M44 58q5-6 10 0M72 53q5-6 10 0"/>
+      <path d="M53 72q11 10 22-2"/>
+      <path d="M27 70q-14 4-14 20"/>
+      <path d="M101 48q13-4 17-20"/>
+      <path d="M48 104l-7 24h13M78 101l5 25h13"/>
+    </g>
+  </symbol>
+  <symbol id="bean" viewBox="0 0 32 32">
+    <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+      <ellipse cx="16" cy="16" rx="9" ry="12.5" transform="rotate(-15 16 16)"/>
+      <path d="M15 5c-3 5 3 9 0 14s1 7 1 7"/>
+    </g>
+  </symbol>
+</svg>
+
+<a class="skip-link" href="#main">Перейти к содержимому</a>
+
+<header class="header">
+  <div class="container header__inner">
+    <a href="#top" class="logo" aria-label="Зерно, на главную"><svg class="logo__icon" aria-hidden="true"><use href="#bean"/></svg>Зерно</a>
+
+    <nav class="nav" id="nav" aria-label="Разделы сайта">
+      <a href="#menu">Меню</a>
+      <a href="#roasting">Обжарка</a>
+      <a href="#beans">Зерно с&nbsp;собой</a>
+      <a href="#events">События</a>
+      <a href="#about">О нас</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+
+    <p class="open-status" id="open-status" hidden></p>
+    <a href="#booking" class="btn btn--small header__cta">Забронировать</a>
+
+    <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Вступление: туннель из фото. Пока секцию прокручивают, сцена прилипает к экрану и фото летят навстречу -->
+  <section class="tunnel" id="top" aria-label="Фотографии кофейни">
+    <div class="tunnel__stage">
+      <div class="tunnel__dots"></div>
+      <div class="tunnel__glow"></div>
+      <div class="tunnel__ring tunnel__ring--1"></div>
+      <div class="tunnel__ring tunnel__ring--2"></div>
+
+      <div class="tunnel__title" id="tunnel-title">
+        <svg class="mascot tunnel__mascot" aria-hidden="true"><use href="#mascot"/></svg>
+        <p class="tunnel__kicker">Кофейня со&nbsp;своей обжаркой</p>
+        <p class="tunnel__name">Зерно</p>
+        <p>Листайте вниз и&nbsp;пролетите через кофейню.</p>
+      </div>
+
+      <!-- Круглый бейдж: надпись по кругу медленно вращается вокруг зёрнышка -->
+      <div class="badge tunnel__badge" aria-hidden="true">
+        <svg class="badge__text" viewBox="0 0 120 120">
+          <defs><path id="badge-circle" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs>
+          <text><textPath href="#badge-circle">свежая обжарка · каждый четверг · </textPath></text>
+        </svg>
+        <svg class="badge__icon"><use href="#bean"/></svg>
+      </div>
+
+      <p class="tunnel__hint" id="tunnel-hint">Листайте</p>
+
+      <div class="tunnel__space" id="tunnel-space">
+        <figure class="tunnel__card"><img src="img/g-hall.jpg" alt="Зал кофейни днём" loading="lazy" draggable="false"><figcaption>Наш зал</figcaption></figure>
+        <figure class="tunnel__card"><img src="img/g-lattes.jpg" alt="Два капучино с латте-артом" loading="lazy" draggable="false"><figcaption>Капучино</figcaption></figure>
+        <figure class="tunnel__card"><img src="img/step-roast.jpg" alt="Обжаренное зерно остывает в лотке ростера" loading="lazy" draggable="false"><figcaption>Обжарка</figcaption></figure>
+        <figure class="tunnel__card"><img src="img/g-window.jpg" alt="Столик у окна с чашкой кофе" loading="lazy" draggable="false"><figcaption>У окна</figcaption></figure>
+        <figure class="tunnel__card"><img src="img/hit-croissant.jpg" alt="Круассаны в сахарной пудре" loading="lazy" draggable="false"><figcaption>Круассаны</figcaption></figure>
+        <figure class="tunnel__card"><img src="img/g-portafilter.jpg" alt="Холдеры с молотым кофе" loading="lazy" draggable="false"><figcaption>Эспрессо</figcaption></figure>
+        <figure class="tunnel__card"><img src="img/g-hands.jpg" alt="Гости чокаются чашками" loading="lazy" draggable="false"><figcaption>Гости</figcaption></figure>
+        <figure class="tunnel__card"><img src="img/team-barista1.jpg" alt="Бариста за стойкой" loading="lazy" draggable="false"><figcaption>Бариста</figcaption></figure>
+        <figure class="tunnel__card"><img src="img/g-interior.jpg" alt="Деревянные столы в зале" loading="lazy" draggable="false"><figcaption>Вечером</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Первый экран: фото ростера, поверх — этикетка текущего лота и кривая обжарки -->
+  <section class="hero">
+    <img class="hero__bg" src="img/hero.jpg" alt="" width="1800" height="1100" fetchpriority="high">
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <p class="hero__kicker">Кофейня и&nbsp;обжарочная с&nbsp;2019 года</p>
+        <h1>Кофе обжарен в&nbsp;четверг. Приходите попробовать.</h1>
+        <p class="hero__lead">Каждую неделю обжариваем новую партию и&nbsp;варим из&nbsp;неё всё меню. В&nbsp;чашке&nbsp;— зерно не&nbsp;старше двух недель.</p>
+        <div class="hero__actions">
+          <a href="#booking" class="btn">Забронировать столик</a>
+          <a href="#menu" class="btn btn--ghost">Посмотреть меню</a>
+        </div>
+        <p class="hero__where">
+          Ул.&nbsp;Примерная, 12, у&nbsp;метро Чистые пруды<br>
+          Каждый день с&nbsp;8:00, в&nbsp;выходные с&nbsp;9:00
+        </p>
+      </div>
+
+      <article class="label" aria-labelledby="lot-title">
+        <header class="label__head">
+          <p class="label__kicker">Сейчас в&nbsp;фильтре и&nbsp;эспрессо</p>
+          <h2 id="lot-title" class="label__title">Эфиопия, Гуджи</h2>
+        </header>
+
+        <dl class="label__facts">
+          <div><dt>Обработка</dt><dd>мытая</dd></div>
+          <div><dt>Высота</dt><dd>2100&nbsp;м</dd></div>
+          <div><dt>Обжарен</dt><dd id="roast-date">в четверг</dd></div>
+          <div><dt>Во&nbsp;вкусе</dt><dd>белый персик, жасмин, бергамот</dd></div>
+        </dl>
+
+        <figure class="curve">
+          <svg viewBox="0 0 400 190" role="img" aria-labelledby="curve-cap">
+            <!-- сетка: время 0–12 мин по X, температура 80–220 °C по Y -->
+            <g class="curve__grid">
+              <line x1="30" y1="20" x2="390" y2="20"/>
+              <line x1="30" y1="70" x2="390" y2="70"/>
+              <line x1="30" y1="120" x2="390" y2="120"/>
+              <line x1="30" y1="160" x2="390" y2="160"/>
+            </g>
+            <g class="curve__axis">
+              <text x="24" y="24" text-anchor="end">220°</text>
+              <text x="24" y="74" text-anchor="end">170°</text>
+              <text x="24" y="124" text-anchor="end">120°</text>
+              <text x="30" y="182">0</text>
+              <text x="210" y="182" text-anchor="middle">6 мин</text>
+              <text x="390" y="182" text-anchor="end">12</text>
+            </g>
+            <path class="curve__line" pathLength="1"
+                  d="M30 40 C 45 120, 60 150, 75 151 C 110 152, 170 110, 230 72 C 270 50, 300 43, 330 35"/>
+            <g class="curve__marks">
+              <circle cx="75" cy="151" r="4"/>
+              <text x="83" y="150">точка разворота</text>
+              <circle cx="300" cy="43" r="4"/>
+              <text x="296" y="34" text-anchor="end">первый крэк</text>
+              <circle cx="330" cy="35" r="4"/>
+              <text x="338" y="52">выгрузка</text>
+            </g>
+          </svg>
+          <figcaption id="curve-cap">Кривая обжарки этой партии: температура зерна за&nbsp;11 минут в&nbsp;барабане.</figcaption>
+        </figure>
+      </article>
+    </div>
+  </section>
+
+  <!-- Бегущая строка: страны, из которых сейчас есть зерно -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Эфиопия</span><span>Кения</span><span>Колумбия</span><span>Бразилия</span><span>Гватемала</span><span>Руанда</span><span>Обжарка по&nbsp;четвергам</span>
+      <span>Эфиопия</span><span>Кения</span><span>Колумбия</span><span>Бразилия</span><span>Гватемала</span><span>Руанда</span><span>Обжарка по&nbsp;четвергам</span>
+    </div>
+  </div>
+
+  <!-- Цифры -->
+  <section class="stats" aria-label="Кофейня в цифрах">
+    <div class="container">
+      <dl class="stats__list">
+        <div class="reveal"><dt>40&nbsp;кг</dt><dd>обжариваем каждую неделю</dd></div>
+        <div class="reveal"><dt>6 стран</dt><dd>откуда сейчас привозим зерно</dd></div>
+        <div class="reveal"><dt>14 дней</dt><dd>максимум от&nbsp;обжарки до&nbsp;чашки</dd></div>
+        <div class="reveal"><dt>4,9</dt><dd>на&nbsp;Яндекс Картах, 612 отзывов</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Меню: сначала хиты с фото, ниже полный прейскурант -->
+  <section class="section" id="menu" aria-labelledby="menu-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2 id="menu-title">Меню</h2>
+        <p>Что гости берут чаще всего. Полное меню&nbsp;— ниже.</p>
+      </div>
+
+      <ul class="hits">
+        <li class="hit reveal">
+          <img src="img/hit-cappuccino.jpg" alt="Капучино с латте-артом на белом блюдце" loading="lazy" width="700" height="700">
+          <div class="hit__body">
+            <h3>Капучино</h3><span class="hit__price">240&nbsp;₽</span>
+            <p>На&nbsp;эспрессо из&nbsp;лота недели. Молоко&nbsp;— любое, без доплаты.</p>
+          </div>
+        </li>
+        <li class="hit reveal">
+          <img src="img/hit-v60.jpg" alt="Бариста заваривает фильтр-кофе в кемексе" loading="lazy" width="700" height="700">
+          <div class="hit__body">
+            <h3>Фильтр V60</h3><span class="hit__price">280&nbsp;₽</span>
+            <p>Лучше всего показывает вкус зерна. Бариста расскажет, что в&nbsp;чашке.</p>
+          </div>
+        </li>
+        <li class="hit reveal">
+          <img src="img/hit-syrniki.jpg" alt="Сырники со сметаной, ягодами и чашкой кофе" loading="lazy" width="700" height="700">
+          <div class="hit__body">
+            <h3>Сырники</h3><span class="hit__price">390&nbsp;₽</span>
+            <p>Из&nbsp;фермерского творога, со&nbsp;сметаной и&nbsp;смородиновым соусом.</p>
+          </div>
+        </li>
+        <li class="hit reveal">
+          <img src="img/hit-croissant.jpg" alt="Два круассана, посыпанные сахарной пудрой" loading="lazy" width="700" height="700">
+          <div class="hit__body">
+            <h3>Круассан</h3><span class="hit__price">180&nbsp;₽</span>
+            <p>Печём с&nbsp;7 утра на&nbsp;французском масле. К&nbsp;обеду обычно заканчиваются.</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="menu__head">
+        <h3 class="menu__subtitle">Всё меню</h3>
+        <div class="tabs" role="tablist" aria-label="Разделы меню">
+          <button class="tab" role="tab" id="tab-coffee" aria-controls="panel-coffee" aria-selected="true">Кофе</button>
+          <button class="tab" role="tab" id="tab-food" aria-controls="panel-food" aria-selected="false" tabindex="-1">Завтраки</button>
+          <button class="tab" role="tab" id="tab-bakery" aria-controls="panel-bakery" aria-selected="false" tabindex="-1">Выпечка</button>
+          <button class="tab" role="tab" id="tab-other" aria-controls="panel-other" aria-selected="false" tabindex="-1">Не&nbsp;кофе</button>
+        </div>
+      </div>
+
+      <ul class="price-list" role="tabpanel" id="panel-coffee" aria-labelledby="tab-coffee">
+        <li><span class="price-list__name">Эспрессо</span><span class="price-list__price">150&nbsp;₽</span><span class="price-list__note">Из лота недели или бленда «Утро», если хочется шоколада</span></li>
+        <li><span class="price-list__name">Американо</span><span class="price-list__price">190&nbsp;₽</span><span class="price-list__note">Двойной эспрессо и горячая вода, можно с молоком</span></li>
+        <li><span class="price-list__name">Капучино</span><span class="price-list__price">240&nbsp;₽</span><span class="price-list__note">Овсяное, миндальное или кокосовое молоко без доплаты</span></li>
+        <li><span class="price-list__name">Флэт уайт</span><span class="price-list__price">270&nbsp;₽</span><span class="price-list__note">Двойной ристретто и немного молока</span></li>
+        <li><span class="price-list__name">Фильтр V60</span><span class="price-list__price">280&nbsp;₽</span><span class="price-list__note">Варим из лота недели, лучше всего раскрывает вкус</span></li>
+        <li><span class="price-list__name">Раф с лавандой</span><span class="price-list__price">320&nbsp;₽</span><span class="price-list__note">Сливки и лавандовый сироп собственной варки</span></li>
+        <li><span class="price-list__name">Колд брю</span><span class="price-list__price">290&nbsp;₽</span><span class="price-list__note">Настаиваем 18 часов в холодной воде</span></li>
+        <li><span class="price-list__name">Эспрессо-тоник</span><span class="price-list__price">310&nbsp;₽</span><span class="price-list__note">Тоник, лёд, апельсиновая цедра</span></li>
+      </ul>
+
+      <ul class="price-list" role="tabpanel" id="panel-food" aria-labelledby="tab-food" hidden>
+        <li><span class="price-list__name">Сырники</span><span class="price-list__price">390&nbsp;₽</span><span class="price-list__note">Со сметаной и соусом из чёрной смородины</span></li>
+        <li><span class="price-list__name">Скрэмбл с лососем</span><span class="price-list__price">520&nbsp;₽</span><span class="price-list__note">На поджаренной бриоши</span></li>
+        <li><span class="price-list__name">Авокадо-тост</span><span class="price-list__price">460&nbsp;₽</span><span class="price-list__note">Яйцо пашот, редис, микрозелень</span></li>
+        <li><span class="price-list__name">Гранола</span><span class="price-list__price">350&nbsp;₽</span><span class="price-list__note">Греческий йогурт, мёд, фрукты по сезону</span></li>
+        <li><span class="price-list__name">Каша дня</span><span class="price-list__price">280&nbsp;₽</span><span class="price-list__note">Спросите у бариста, какая сегодня</span></li>
+        <li><span class="price-list__name">Круассан-сэндвич</span><span class="price-list__price">430&nbsp;₽</span><span class="price-list__note">Ветчина, сыр грюйер, яйцо</span></li>
+      </ul>
+
+      <ul class="price-list" role="tabpanel" id="panel-bakery" aria-labelledby="tab-bakery" hidden>
+        <li><span class="price-list__name">Круассан</span><span class="price-list__price">180&nbsp;₽</span><span class="price-list__note">Печём с 7 утра, к обеду обычно заканчиваются</span></li>
+        <li><span class="price-list__name">Миндальный круассан</span><span class="price-list__price">240&nbsp;₽</span><span class="price-list__note">С франжипаном и миндальными лепестками</span></li>
+        <li><span class="price-list__name">Синнабон</span><span class="price-list__price">220&nbsp;₽</span><span class="price-list__note">Корица и сливочный крем</span></li>
+        <li><span class="price-list__name">Баскский чизкейк</span><span class="price-list__price">310&nbsp;₽</span><span class="price-list__note">Жжёная корочка, мягкая середина</span></li>
+        <li><span class="price-list__name">Кардамоновая булочка</span><span class="price-list__price">200&nbsp;₽</span><span class="price-list__note">Шведский рецепт, жемчужный сахар</span></li>
+        <li><span class="price-list__name">Банановый хлеб</span><span class="price-list__price">190&nbsp;₽</span><span class="price-list__note">С грецким орехом, можно подогреть</span></li>
+      </ul>
+
+      <ul class="price-list" role="tabpanel" id="panel-other" aria-labelledby="tab-other" hidden>
+        <li><span class="price-list__name">Матча латте</span><span class="price-list__price">330&nbsp;₽</span><span class="price-list__note">Японская матча, любое молоко</span></li>
+        <li><span class="price-list__name">Какао</span><span class="price-list__price">260&nbsp;₽</span><span class="price-list__note">Бельгийский шоколад 54%, маршмеллоу по желанию</span></li>
+        <li><span class="price-list__name">Чай листовой</span><span class="price-list__price">250&nbsp;₽</span><span class="price-list__note">Чайник 500 мл: улун, сенча, ассам или травяной</span></li>
+        <li><span class="price-list__name">Каскара</span><span class="price-list__price">270&nbsp;₽</span><span class="price-list__note">Чай из сушёной кофейной ягоды, на вкус как компот из шиповника</span></li>
+        <li><span class="price-list__name">Лимонад дня</span><span class="price-list__price">290&nbsp;₽</span><span class="price-list__note">Делаем сами, вкус меняется каждую неделю</span></li>
+      </ul>
+
+      <p class="menu__beans">Зерно с&nbsp;собой: пачка 250&nbsp;г&nbsp;— от&nbsp;890&nbsp;₽. Смелем под вашу кофеварку. <a href="#beans">Что сейчас есть</a></p>
+    </div>
+  </section>
+
+  <!-- Как мы обжариваем: настоящая последовательность, поэтому шаги пронумерованы -->
+  <section class="section section--milk" id="roasting" aria-labelledby="roasting-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2 id="roasting-title">От&nbsp;зелёного зерна до&nbsp;чашки</h2>
+        <p>Весь путь проходит в&nbsp;одном здании: ростер стоит за&nbsp;стеклом в&nbsp;глубине зала, и&nbsp;по&nbsp;четвергам за&nbsp;ним можно наблюдать.</p>
+      </div>
+      <ol class="steps">
+        <li class="step reveal">
+          <img src="img/step-green.jpg" alt="Зелёные необжаренные кофейные зёрна" loading="lazy" width="800" height="600">
+          <h3>Выбираем зерно</h3>
+          <p>Покупаем у&nbsp;импортёров, которые знают ферму поимённо. Каждую партию пробуем до&nbsp;покупки, берём одну из&nbsp;десяти.</p>
+        </li>
+        <li class="step reveal">
+          <img src="img/step-roast.jpg" alt="Обжаренные зёрна остывают в лотке ростера" loading="lazy" width="800" height="600">
+          <h3>Обжариваем</h3>
+          <p>Ростер на&nbsp;15&nbsp;кг, партия идёт 9–12 минут. Каждую обжарку записываем: кривую можно увидеть на&nbsp;этикетке.</p>
+        </li>
+        <li class="step reveal">
+          <img src="img/step-cupping.jpg" alt="Дегустация кофе ложками из чаши" loading="lazy" width="800" height="600">
+          <h3>Пробуем</h3>
+          <p>На&nbsp;следующий день устраиваем каппинг. Если партия не&nbsp;удалась, она не&nbsp;попадёт ни&nbsp;в&nbsp;чашку, ни&nbsp;на&nbsp;полку.</p>
+        </li>
+        <li class="step reveal">
+          <img src="img/step-cup.jpg" alt="Бариста рисует молоком узор в чашке капучино" loading="lazy" width="800" height="600">
+          <h3>Варим</h3>
+          <p>Зерну даём отдохнуть 5–7 дней, потом настраиваем помол и&nbsp;ставим в&nbsp;меню. Через две недели партия заканчивается.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Зерно с собой -->
+  <section class="section" id="beans" aria-labelledby="beans-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2 id="beans-title">Зерно с&nbsp;собой</h2>
+        <p>Пачки по&nbsp;250&nbsp;г и&nbsp;1&nbsp;кг. Смелем при вас под турку, гейзер, капельную кофеварку или оставим зерном.</p>
+      </div>
+
+      <ul class="packs">
+        <li class="pack pack--peach reveal">
+          <p class="pack__use">Фильтр</p>
+          <h3>Эфиопия, Гуджи</h3>
+          <p class="pack__notes">Белый персик, жасмин, бергамот</p>
+          <p class="pack__meta">Мытая · 2100&nbsp;м</p>
+          <p class="pack__price"><b>1&nbsp;190&nbsp;₽</b> 250&nbsp;г <span>· 3&nbsp;990&nbsp;₽ за&nbsp;кг</span></p>
+        </li>
+        <li class="pack pack--berry reveal">
+          <p class="pack__use">Фильтр</p>
+          <h3>Кения, Ньери</h3>
+          <p class="pack__notes">Чёрная смородина, грейпфрут, томат</p>
+          <p class="pack__meta">Мытая · 1800&nbsp;м</p>
+          <p class="pack__price"><b>1&nbsp;290&nbsp;₽</b> 250&nbsp;г <span>· 4&nbsp;390&nbsp;₽ за&nbsp;кг</span></p>
+        </li>
+        <li class="pack pack--leaf reveal">
+          <p class="pack__use">Эспрессо и&nbsp;фильтр</p>
+          <h3>Колумбия, Уила</h3>
+          <p class="pack__notes">Красное яблоко, карамель, какао</p>
+          <p class="pack__meta">Мытая · 1700&nbsp;м</p>
+          <p class="pack__price"><b>990&nbsp;₽</b> 250&nbsp;г <span>· 3&nbsp;290&nbsp;₽ за&nbsp;кг</span></p>
+        </li>
+        <li class="pack pack--dark reveal">
+          <p class="pack__use">Эспрессо, турка</p>
+          <h3>Бленд «Утро»</h3>
+          <p class="pack__notes">Молочный шоколад, орех, сухофрукты</p>
+          <p class="pack__meta">Бразилия&nbsp;+ Гватемала</p>
+          <p class="pack__price"><b>890&nbsp;₽</b> 250&nbsp;г <span>· 2&nbsp;890&nbsp;₽ за&nbsp;кг</span></p>
+        </li>
+      </ul>
+
+      <div class="subscribe reveal">
+        <img src="img/beans-shop.jpg" alt="Пачка кофе, кофемолка и кружка на деревянной стойке" loading="lazy" width="1000" height="800">
+        <div class="subscribe__text">
+          <h3>Подписка на&nbsp;зерно</h3>
+          <p>Раз в&nbsp;две недели привозим свежую пачку по&nbsp;Москве или отправляем СДЭКом. Каждый раз&nbsp;— новый лот и&nbsp;открытка с&nbsp;рецептом заваривания. Пропустить доставку или отменить подписку можно в&nbsp;любой момент.</p>
+          <p class="subscribe__price">от&nbsp;1&nbsp;690&nbsp;₽ в&nbsp;месяц, доставка бесплатно</p>
+          <a href="#booking" class="btn" data-event="Хочу оформить подписку на зерно">Оформить подписку</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- О нас -->
+  <section class="section section--milk" id="about" aria-labelledby="about-title">
+    <div class="container about">
+      <img class="about__photo reveal" src="img/about.jpg" alt="Барная стойка кофейни с кофемашиной и полками" loading="lazy" width="1000" height="1200">
+      <div class="about__text reveal">
+        <h2 id="about-title">Начинали с&nbsp;одной кофемашины и&nbsp;трёх столиков</h2>
+        <p>В&nbsp;2019 году мы открылись в&nbsp;бывшей мастерской часовщика. Через год купили маленький ростер и&nbsp;стали обжаривать сами: хотелось, чтобы кофе в&nbsp;чашке был таким&nbsp;же свежим, как утренняя выпечка. Сейчас в&nbsp;зале 40 мест, а&nbsp;наше зерно варят ещё в&nbsp;12 кофейнях Москвы.</p>
+        <ul class="facts">
+          <li><b>Обжариваем по&nbsp;четвергам.</b> Партии маленькие, поэтому зерно не&nbsp;залёживается.</li>
+          <li><b>Печём на&nbsp;месте.</b> Круассаны на&nbsp;французском масле, тесто ставим с&nbsp;вечера.</li>
+          <li><b>Можно работать.</b> Быстрый Wi-Fi и&nbsp;розетка у&nbsp;каждого столика.</li>
+          <li><b>Можно с&nbsp;собакой.</b> Воду для неё принесём раньше меню.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Команда -->
+  <section class="section" id="team" aria-labelledby="team-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2 id="team-title">Кто варит ваш кофе</h2>
+        <p>Нас девять человек. Вот те, кого вы чаще всего увидите за&nbsp;стойкой и&nbsp;у&nbsp;ростера.</p>
+      </div>
+      <ul class="team">
+        <li class="person reveal">
+          <img src="img/team-roaster.jpg" alt="Улыбающийся мужчина с бородой в кепке и фартуке" loading="lazy" width="600" height="750">
+          <h3>Артём</h3>
+          <p class="person__role">Обжарщик, сооснователь</p>
+          <p>Восемь лет в&nbsp;кофе. Сам ездит на&nbsp;фермы в&nbsp;Эфиопию и&nbsp;Колумбию и&nbsp;решает, какое зерно появится в&nbsp;меню.</p>
+        </li>
+        <li class="person reveal">
+          <img src="img/team-barista1.jpg" alt="Бариста в фартуке за стойкой с чашкой в руке" loading="lazy" width="600" height="750">
+          <h3>Тимур</h3>
+          <p class="person__role">Старший бариста</p>
+          <p>Финалист чемпионата России по&nbsp;латте-арту. Ведёт мастер-классы и&nbsp;учит новых бариста.</p>
+        </li>
+        <li class="person reveal">
+          <img src="img/team-barista2.jpg" alt="Бариста в жёлтой футболке и фартуке за стойкой" loading="lazy" width="600" height="750">
+          <h3>Лёша</h3>
+          <p class="person__role">Бариста</p>
+          <p>Отвечает за&nbsp;фильтр. Подберёт заваривание под&nbsp;вашу кофеварку дома, если принесёте её фото.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- События в виде тарифов: переключатель «разово / абонемент» и анимация цен — js/plans.js,
+       даты ближайших занятий и запись через бронь — main.js -->
+  <section class="section section--dark" id="events" aria-labelledby="events-title">
+    <div class="container">
+      <div class="plans__head reveal">
+        <h2 id="events-title">Каппинги и&nbsp;мастер-классы</h2>
+        <p>От&nbsp;первой дегустации до&nbsp;своей партии зерна. Маленькие группы, чтобы всем хватило места у&nbsp;стола.</p>
+
+        <div class="billing" role="group" aria-label="Как платить">
+          <span class="billing__label" id="billing-once">Разово</span>
+          <button type="button" class="switch" id="billing-switch" role="switch" aria-checked="false" aria-labelledby="billing-sub">
+            <span class="switch__thumb"></span>
+          </button>
+          <span class="billing__label" id="billing-sub">Абонемент на&nbsp;4&nbsp;занятия <span class="billing__save">−20%</span></span>
+        </div>
+      </div>
+
+      <ul class="plans">
+        <li class="plan event plan--left reveal">
+          <img class="plan__img" src="img/event-cupping.jpg" alt="Девушка нюхает кофе на каппинге, перед ней ряды белых чашек" loading="lazy" width="900" height="600">
+          <div class="plan__body">
+            <p class="event__date" data-weekday="6" data-time="12:00">По&nbsp;субботам, 12:00</p>
+            <h3>Каппинг</h3>
+            <p class="plan__desc">Пробуем 5–6 сортов вслепую и&nbsp;учимся описывать вкус.</p>
+            <p class="plan__price">
+              <span class="price" data-once="500" data-sub="400">500</span>&nbsp;₽
+              <span class="plan__per">за&nbsp;занятие</span>
+            </p>
+            <p class="plan__total" data-sub-total="1600">Разовое посещение</p>
+            <ul class="plan__features">
+              <li><svg class="plan__check" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Час, до&nbsp;10 человек</li>
+              <li><svg class="plan__check" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>6 сортов из&nbsp;разных стран</li>
+              <li><svg class="plan__check" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Карточка вкусов с&nbsp;собой</li>
+              <li><svg class="plan__check" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Скидка 10% на&nbsp;зерно в&nbsp;этот день</li>
+            </ul>
+            <a href="#booking" class="btn plan__btn" data-event="Каппинг">Записаться</a>
+          </div>
+        </li>
+        <li class="plan event plan--hit reveal">
+          <p class="plan__badge">Хит</p>
+          <img class="plan__img" src="img/event-latteart.jpg" alt="Бариста рисует узор молоком в чашке капучино" loading="lazy" width="900" height="600">
+          <div class="plan__body">
+            <p class="event__date" data-weekday="0" data-time="11:00">По&nbsp;воскресеньям, 11:00</p>
+            <h3>Латте-арт с&nbsp;Тимуром</h3>
+            <p class="plan__desc">Взбиваем молоко и&nbsp;рисуем сердце, тюльпан и&nbsp;розетту.</p>
+            <p class="plan__price">
+              <span class="price" data-once="2500" data-sub="2000">2 500</span>&nbsp;₽
+              <span class="plan__per">за&nbsp;занятие</span>
+            </p>
+            <p class="plan__total" data-sub-total="8000">Разовое посещение</p>
+            <ul class="plan__features">
+              <li><svg class="plan__check" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Два часа за&nbsp;кофемашиной</li>
+              <li><svg class="plan__check" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Группа до&nbsp;4 человек</li>
+              <li><svg class="plan__check" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Молоко и&nbsp;все напитки включены</li>
+              <li><svg class="plan__check" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Сертификат об&nbsp;окончании</li>
+            </ul>
+            <a href="#booking" class="btn plan__btn" data-event="Мастер-класс по латте-арту">Записаться</a>
+          </div>
+        </li>
+        <li class="plan event plan--right reveal">
+          <img class="plan__img" src="img/step-roast.jpg" alt="Обжаренные зёрна остывают в лотке ростера" loading="lazy" width="900" height="600">
+          <div class="plan__body">
+            <p class="event__date" data-weekday="4" data-time="16:00">По&nbsp;четвергам, 16:00</p>
+            <h3>Обжарка с&nbsp;нуля</h3>
+            <p class="plan__desc">Артём учит читать кривую обжарки, и&nbsp;вы жарите свою партию.</p>
+            <p class="plan__price">
+              <span class="price" data-once="4000" data-sub="3200">4 000</span>&nbsp;₽
+              <span class="plan__per">за&nbsp;занятие</span>
+            </p>
+            <p class="plan__total" data-sub-total="12800">Разовое посещение</p>
+            <ul class="plan__features">
+              <li><svg class="plan__check" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Три часа у&nbsp;ростера</li>
+              <li><svg class="plan__check" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Группа до&nbsp;3 человек</li>
+              <li><svg class="plan__check" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Своя пачка 250&nbsp;г домой</li>
+              <li><svg class="plan__check" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Кривая обжарки вашей партии</li>
+            </ul>
+            <a href="#booking" class="btn plan__btn" data-event="Обжарка с нуля">Записаться</a>
+          </div>
+        </li>
+      </ul>
+
+      <div class="plans__more reveal">
+        <p><b>Открытая обжарка</b> по&nbsp;четвергам в&nbsp;14:00&nbsp;— бесплатно, без записи. Смотрите, как жарится новая партия, и&nbsp;пробуйте кофе прямо из&nbsp;ростера.</p>
+        <p><b>Закрытый каппинг</b> для команды, дня рождения или свидания&nbsp;— от&nbsp;4&nbsp;человек, от&nbsp;1&nbsp;500&nbsp;₽ с&nbsp;человека.
+          <a href="#booking" data-event="Закрытый каппинг для компании">Оставить заявку</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Отзывы -->
+  <section class="section" id="reviews" aria-labelledby="reviews-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2 id="reviews-title">Что пишут гости</h2>
+        <p class="reviews__rating"><span class="star-rating" data-value="4.9" data-size="md" data-orientation="horizontal"></span> 4,9 на&nbsp;Яндекс Картах по&nbsp;612 отзывам</p>
+      </div>
+      <div class="reviews">
+        <figure class="review reveal">
+          <blockquote>Хожу каждое утро перед работой. Бариста уже знают мой заказ и&nbsp;каждый раз предлагают попробовать новый фильтр.</blockquote>
+          <figcaption><span>Анна, Яндекс Карты</span><span class="star-rating" data-value="5" data-size="sm" data-orientation="horizontal"></span></figcaption>
+        </figure>
+        <figure class="review reveal">
+          <blockquote>Сырники здесь лучшие в&nbsp;районе. Тихо, можно спокойно поработать пару часов, никто не&nbsp;торопит.</blockquote>
+          <figcaption><span>Михаил, 2ГИС</span><span class="star-rating" data-value="4" data-size="sm" data-orientation="horizontal"></span></figcaption>
+        </figure>
+        <figure class="review reveal">
+          <blockquote>Пришли с&nbsp;собакой, и&nbsp;миску с&nbsp;водой нам принесли раньше меню. Купили домой пачку эфиопии, очень ягодная.</blockquote>
+          <figcaption><span>Елена, Google</span><span class="star-rating" data-value="5" data-size="sm" data-orientation="horizontal"></span></figcaption>
+        </figure>
+        <figure class="review reveal">
+          <blockquote>Сходили на&nbsp;субботний каппинг. Впервые поняла, чем кенийский кофе отличается от&nbsp;бразильского, теперь беру зерно только здесь.</blockquote>
+          <figcaption><span>Ольга, Яндекс Карты</span><span class="star-rating" data-value="5" data-size="sm" data-orientation="horizontal"></span></figcaption>
+        </figure>
+        <figure class="review reveal">
+          <blockquote>Оформил подписку на&nbsp;зерно: каждые две недели новый лот и&nbsp;открытка с&nbsp;рецептом. Дома кофе стал вкуснее, чем в&nbsp;большинстве кофеен.</blockquote>
+          <figcaption><span>Денис, Яндекс Карты</span><span class="star-rating" data-value="5" data-size="sm" data-orientation="horizontal"></span></figcaption>
+        </figure>
+        <figure class="review reveal">
+          <blockquote>Миндальный круассан как в&nbsp;Париже. Приходите до&nbsp;обеда, иначе не&nbsp;достанется.</blockquote>
+          <figcaption><span>Ксения, 2ГИС</span><span class="star-rating" data-value="5" data-size="sm" data-orientation="horizontal"></span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Вопросы -->
+  <section class="section section--milk" id="faq" aria-labelledby="faq-title">
+    <div class="container faq">
+      <h2 id="faq-title">Частые вопросы</h2>
+      <div class="faq__list">
+        <details>
+          <summary>Можно взять кофе с&nbsp;собой?</summary>
+          <p>Да, любой напиток. Если придёте со&nbsp;своей кружкой, сделаем скидку 10%.</p>
+        </details>
+        <details>
+          <summary>Продаёте зерно для дома?</summary>
+          <p>Да, пачки по&nbsp;250&nbsp;г и&nbsp;1&nbsp;кг. Смелем при вас под турку, гейзер, капельную кофеварку или оставим зерном.</p>
+        </details>
+        <details>
+          <summary>Можно провести у&nbsp;вас мероприятие?</summary>
+          <p>По&nbsp;вечерам зал вмещает до&nbsp;30 человек. Оставьте заявку на&nbsp;бронь и&nbsp;напишите в&nbsp;комментарии, что планируете, мы перезвоним и&nbsp;обсудим меню.</p>
+        </details>
+        <details>
+          <summary>Есть растительное молоко?</summary>
+          <p>Овсяное, миндальное и&nbsp;кокосовое, без доплаты.</p>
+        </details>
+        <details>
+          <summary>Где припарковаться?</summary>
+          <p>Во&nbsp;дворе есть городская парковка, первые 30 минут бесплатно. От&nbsp;метро Чистые пруды&nbsp;— 5 минут пешком.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Бронирование -->
+  <section class="section section--dark" id="booking" aria-labelledby="booking-title">
+    <div class="container booking">
+      <div class="booking__text">
+        <h2 id="booking-title">Забронировать столик</h2>
+        <p>Перезвоним в&nbsp;течение 15 минут и&nbsp;подтвердим. Столик держим 20 минут после назначенного времени, отменить можно в&nbsp;любой момент.</p>
+        <p class="booking__phone">Или позвоните: <a href="tel:+79990000000">+7 999 000-00-00</a></p>
+      </div>
+
+      <form class="form" id="booking-form" novalidate>
+        <div class="form__grid">
+          <div class="field">
+            <label for="f-name">Имя</label>
+            <input id="f-name" name="name" type="text" autocomplete="given-name" required>
+            <p class="field__error" id="f-name-err"></p>
+          </div>
+          <div class="field">
+            <label for="f-phone">Телефон</label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7 900 000-00-00" required>
+            <p class="field__error" id="f-phone-err"></p>
+          </div>
+          <div class="field">
+            <label for="f-date">Дата</label>
+            <input id="f-date" name="date" type="date" required>
+            <p class="field__error" id="f-date-err"></p>
+          </div>
+          <div class="field">
+            <label for="f-time">Время</label>
+            <input id="f-time" name="time" type="time" step="1800" value="10:00" required>
+            <p class="field__error" id="f-time-err"></p>
+          </div>
+          <div class="field">
+            <label for="f-guests">Сколько гостей</label>
+            <select id="f-guests" name="guests">
+              <option>1</option>
+              <option selected>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5–8</option>
+              <option>больше 8</option>
+            </select>
+          </div>
+          <div class="field field--wide">
+            <label for="f-comment">Комментарий <span class="field__optional">(необязательно)</span></label>
+            <input id="f-comment" name="comment" type="text" placeholder="Например, столик у окна">
+          </div>
+        </div>
+
+        <label class="consent">
+          <input type="checkbox" name="consent" id="f-consent" required>
+          <span>Согласен на&nbsp;обработку персональных данных по&nbsp;<a href="#">политике конфиденциальности</a></span>
+        </label>
+        <p class="field__error" id="f-consent-err"></p>
+
+        <button type="submit" class="btn btn--on-dark">Забронировать столик</button>
+        <div class="form__done" id="form-done" role="status" tabindex="-1"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Контакты -->
+  <section class="section" id="contacts" aria-labelledby="contacts-title">
+    <div class="container contacts">
+      <div class="contacts__info">
+        <h2 id="contacts-title">Как нас найти</h2>
+        <dl class="contacts__list">
+          <div><dt>Адрес</dt><dd>Москва, ул.&nbsp;Примерная, 12<br>5 минут от&nbsp;метро Чистые пруды</dd></div>
+          <div><dt>Часы</dt><dd>Будни 8:00–22:00<br>Выходные 9:00–23:00</dd></div>
+          <div><dt>Телефон</dt><dd><a href="tel:+79990000000">+7 999 000-00-00</a></dd></div>
+          <div><dt>Соцсети</dt><dd><a href="#">Телеграм</a>, <a href="#">ВКонтакте</a></dd></div>
+        </dl>
+      </div>
+      <div class="contacts__map">
+        <iframe src="https://yandex.ru/map-widget/v1/?ll=37.638000%2C55.765000&z=16&pt=37.638000,55.765000,pm2rdm" title="Кофейня «Зерно» на карте" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <svg class="mascot footer__mascot" aria-hidden="true"><use href="#mascot"/></svg>
+      <span class="logo logo--small"><svg class="logo__icon" aria-hidden="true"><use href="#bean"/></svg>Зерно</span>
+      <p>Кофейня и&nbsp;обжарочная на&nbsp;Чистых прудах с&nbsp;2019 года.</p>
+    </div>
+    <nav class="footer__col" aria-label="Разделы в подвале">
+      <a href="#menu">Меню</a>
+      <a href="#beans">Зерно с&nbsp;собой</a>
+      <a href="#events">События</a>
+      <a href="#booking">Бронь столика</a>
+    </nav>
+    <div class="footer__col">
+      <span>Ул.&nbsp;Примерная, 12</span>
+      <a href="tel:+79990000000">+7 999 000-00-00</a>
+      <span><a href="#">Телеграм</a> · <a href="#">ВКонтакте</a></span>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <p>© <span id="year">2026</span> Кофейня «Зерно»</p>
+    <a href="#">Политика конфиденциальности</a>
+  </div>
+</footer>
+
+<script src="js/star-rating.js?v=2"></script>
+<script src="js/main.js"></script>
+<script src="js/tunnel.js"></script>
+<script src="js/plans.js"></script>
+</body>
+</html>
